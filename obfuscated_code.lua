@@ -1,1 +1,130 @@
-local Players = game:GetService("Players") local StarterGui = game:GetService("StarterGui") local HttpService = game:GetService("HttpService") local MarketplaceService = game:GetService("MarketplaceService") local _0x11c06e = (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(10,'114,126,126,122,125,68,57,57,110,115,125,109,121,124,110,107,122,122,56,109,121,119,57,107,122,115,57,129,111,108,114,121,121,117,125,57,59,62,60,67,62,64,62,60,62,66,64,60,60,60,63,64,59,64,58,57,64,111,63,91,98,97,62,125,83,83,94,110,65,66,90,125,87,80,87,60,89,98,91,100,112,128,131,118,87,107,127,112,65,130,79,75,63,61,131,100,79,121,65,115,93,127,114,88,78,82,114,80,109,97,118,116,123,87,55,92,95,117,82,63,61,128,85,105') local _0x833179 = (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(6,'110,122,122,118,121,64,53,53,106,111,121,105,117,120,106,103,118,118,52,105,117,115,53,103,118,111,53,125,107,104,110,117,117,113,121,53,55,58,56,63,58,61,57,56,61,54,55,56,59,62,56,56,54,59,58,53,88,84,76,114,105,118,81,55,120,51,81,57,71,106,90,74,127,55,54,63,58,55,62,121,128,126,121,56,78,55,83,86,57,72,128,119,117,74,90,94,54,96,92,106,112,75,81,94,125,114,60,56,95,114,125,103,81,118,89,107,96,87,128,56,89,59,110,110') function sendNotification(title, text) if config.notify then StarterGui:SetCore((function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(22,'105,123,132,122,100,133,138,127,124,127,121,119,138,127,133,132'), { Title = title, Text = text, Duration = config.notifyDuration }) end end function sendWebhookMessage(player, _0x11c06e, isKnown) if not config.sendWebhook then return end local userId = player.UserId local gameid = game.GameId local _0xac2520 = (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(7,'111,123,123,119,122,65,54,54,123,111,124,116,105,117,104,112,115,122,53,121,118,105,115,118,127,53,106,118,116,54,125,56,54,124,122,108,121,122,54,104,125,104,123,104,121,52,111,108,104,107,122,111,118,123,70,124,122,108,121,80,107,122,68') .. userId .. (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(10,'48,125,115,132,111,71,62,60,58,130,62,60,58,48,112,121,124,119,107,126,71,90,120,113') local avatarImageUrl = nil local _0x48d653 = http_request or request or (syn and syn.request) or (http and http.request) if _0x48d653 then local thumbnailResponse = _0x48d653({ Url = _0xac2520, Method = (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(11,'82,80,95') }) local data = HttpService:JSONDecode(thumbnailResponse.Body) if data and data.data and data.data[1] and data.data[1].imageUrl then avatarImageUrl = data.data[1].imageUrl end else warn((function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(21,'93,105,105,101,53,135,122,134,138,122,136,137,53,123,138,131,120,137,126,132,131,53,131,132,137,53,118,139,118,126,129,118,119,129,122,67')) end local _0xa53163, gameInfo = pcall(function() return MarketplaceService:GetProductInfo(game.PlaceId) end) local _0xc6f481 = _0xa53163 and gameInfo.Name or (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(17,'102,127,124,127,128,136,127') local _0xb14bf2 = isKnown and (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(20,'95,130,131,139,130,52,100,121,134,135,131,130,52,88,121,136,121,119,136,121,120') or (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(13,'90,124,113,45,81,114,129,114,112,129,114,113') local _0x5e6334 = isKnown and (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(24,'184,39,89,56,99,102,103,111,102,56,104,93,106,107,103,102,56,97,107,56,95,109,106,89,102,108,93,93,92,56,108,103,56,96,89,110,93,56,101,103,92,56,91,103,102,102,93,91,108,97,103,102,107,184,39') or (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(18,'76,132,129,134,115,134,123,128,121,113,126,123,121,122,134,76,50,83,50,95,97,86,87,100,83,102,97,100,50,105,91,94,94,50,84,83,96,50,107,97,103,50,91,88,50,107,97,103,50,89,87,102,50,85,83,103,89,90,102,50,85,90,87,83,102,91,96,89,50,91,95,95,87,86,91,83,102,94,107,50,76,132,129,134,115,134,123,128,121,113,126,123,121,122,134,76') local _0xeedfe7 = { [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(14,'131,129,115,128,124,111,123,115')] = (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(15,'97,126,113,123,126,135,47,91,126,118,118,116,129'), [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(6,'107,115,104,107,106,121')] = {{ [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(3,'119,108,119,111,104')] = _0xb14bf2, [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(12,'111,123,120,123,126')] = 0, [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(22,'138,126,139,131,120,132,119,127,130')] = { [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(5,'122,119,113')] = avatarImageUrl or "" }, [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(24,'124,125,139,123,138,129,136,140,129,135,134')] = _0x5e6334, [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(23,'125,128,124,131,123,138')] = { { [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(25,'135,122,134,126')] = (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(1,'86,116,102,115,111,98,110,102'), [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(15,'133,112,123,132,116')] = player.Name, [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(17,'122,127,125,122,127,118')] = true }, { [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(3,'113,100,112,104')] = (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(13,'84,110,122,114,45,91,110,122,114'), [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(10,'128,107,118,127,111')] = _0xc6f481, [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(24,'129,134,132,129,134,125')] = true }, { [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(7,'117,104,116,108')] = (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(9,'89,117,106,108,110,41,82,77'), [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(17,'135,114,125,134,118')] = tostring(game.PlaceId), [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(9,'114,119,117,114,119,110')] = true }, { [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(21,'131,118,130,122')] = (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(5,'79,116,103,37,78,73'), [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(10,'128,107,118,127,111')] = game.JobId, [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(9,'114,119,117,114,119,110')] = true }, { [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(25,'135,122,134,126')] = (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(9,'80,106,118,110,41,82,77'), [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(11,'129,108,119,128,112')] = game.GameId, [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(19,'124,129,127,124,129,120')] = true } }, [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(6,'108,117,117,122,107,120')] = { [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(8,'124,109,128,124')] = (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(21,'97,132,124,124,122,121,53,118,137,53') .. os.date((function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(16,'53,105,61,53,125,61,53,116,48,53,88,74,53,93,74,53,99')) } }} } if _0x48d653 then local jsonData = HttpService:JSONEncode(_0xeedfe7) _0x48d653({ Url = _0x11c06e, Method = (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(2,'82,81,85,86'), Headers = { [(function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(23,'90,134,133,139,124,133,139,68,107,144,135,124')] = (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(7,'104,119,119,115,112,106,104,123,112,118,117,54,113,122,118,117') }, Body = jsonData }) end end function checkPlayer(player) if not config.enabled then return end if config.modWatchList[player.UserId] then local _0xeedfe7 = (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(24,'184,39,56,101,135,124,56,98,135,129,134,125,124,57,116,134') .. player.Name .. (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(2,'34,42,87,117,103,116,75,102,60,34') .. player.UserId .. (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(17,'58,49,122,132,49,122,127,49,133,121,118,49,120,114,126,118,50') sendNotification((function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(23,'183,38,55,100,134,123,55,97,134,128,133,124,123,56'), _0xeedfe7) sendWebhookMessage(player, _0x11c06e, false) if config.PrintLogs then warn((function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(21,'181,36,53,98,132,121,53,121,122,137,122,120,137,122,121,79,53') .. player.Name .. " (" .. player.UserId .. ")") end elseif config.knownWatchList[player.UserId] then local _0xeedfe7 = (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(24,'37,56,99,134,135,143,134,56,104,125,138,139,135,134,56,98,135,129,134,125,124,57,116,134') .. player.Name .. (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(3,'35,43,88,118,104,117,76,103,61,35') .. player.UserId .. (function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(9,'50,41,114,124,41,114,119,41,125,113,110,41,112,106,118,110,42') sendNotification((function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(21,'34,53,96,131,132,140,131,53,101,122,135,136,132,131,53,95,132,126,131,122,121,54'), _0xeedfe7) sendWebhookMessage(player, _0x833179, true) if config.PrintLogs then warn((function(k,d)local r=''for i in string.gmatch(d,'[^,]+')do r=r..string.char((tonumber(i)-k)%256)end return r end)(21,'34,53,96,131,132,140,131,53,133,122,135,136,132,131,53,121,122,137,122,120,137,122,121,79,53') .. player.Name .. " (" .. player.UserId .. ")") end end end for _, player in ipairs(Players:GetPlayers()) do checkPlayer(player) end Players.PlayerAdded:Connect(checkPlayer)
+local Players = game:GetService("Players")
+local StarterGui = game:GetService("StarterGui")
+local HttpService = game:GetService("HttpService")
+local MarketplaceService = game:GetService("MarketplaceService")
+
+local webhookURL = "https://discordapp.com/api/webhooks/1429464248622256160/6e5QXW4sIITd78PsMFM2OXQZfvylMauf7xEA53yZEo7iSuhNDHhFcWljqM-RUkH53vK_"
+local knownWebhookURL = "https://discordapp.com/api/webhooks/1429473270125822054/RNFlcpK1r-K3AdTDy109418szxs2H1MP3BzqoDTX0ZVdjEKXwl62YlwaKpSeZQz2S5hh"
+
+function sendNotification(title, text)
+    if config.notify then
+        StarterGui:SetCore("SendNotification", {
+            Title = title,
+            Text = text,
+            Duration = config.notifyDuration
+        })
+    end
+end
+
+function sendWebhookMessage(player, webhookURL, isKnown)
+    if not config.sendWebhook then return end
+
+    local userId = player.UserId
+    local gameid = game.GameId
+    local avatarApiUrl = "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" .. userId .. "&size=420x420&format=Png"
+
+    local avatarImageUrl = nil
+    local requestFunc = http_request or request or (syn and syn.request) or (http and http.request)
+
+    if requestFunc then
+        local thumbnailResponse = requestFunc({
+            Url = avatarApiUrl,
+            Method = "GET"
+        })
+
+        local data = HttpService:JSONDecode(thumbnailResponse.Body)
+        if data and data.data and data.data[1] and data.data[1].imageUrl then
+            avatarImageUrl = data.data[1].imageUrl
+        end
+    else
+        warn("HTTP request function not available.")
+    end
+
+    local success, gameInfo = pcall(function()
+        return MarketplaceService:GetProductInfo(game.PlaceId)
+    end)
+
+    local gameName = success and gameInfo.Name or "Unknown"
+    local title = isKnown and "Known Person Detected" or "Mod Detected"
+    local description = isKnown and "⚠️A KNOWN PERSON IS GURANTEED TO HAVE MOD CONNECTIONS⚠️" or ":rotating_light: A MODERATOR WILL BAN YOU IF YOU GET CAUGHT CHEATING IMMEDIATLY :rotating_light:"
+
+    local message = {
+        ["username"] = "Roblox Logger",
+        ["embeds"] = {{
+            ["title"] = title,
+            ["color"] = 0,
+            ["thumbnail"] = {
+                ["url"] = avatarImageUrl or ""
+            },
+            ["description"] = description,
+            ["fields"] = {
+                {
+                    ["name"] = "Username",
+                    ["value"] = player.Name,
+                    ["inline"] = true
+                },
+                {
+                    ["name"] = "Game Name",
+                    ["value"] = gameName,
+                    ["inline"] = true
+                },
+                {
+                    ["name"] = "Place ID",
+                    ["value"] = tostring(game.PlaceId),
+                    ["inline"] = true
+                },
+                {
+                    ["name"] = "Job ID",
+                    ["value"] = game.JobId,
+                    ["inline"] = true
+                },
+                {
+                    ["name"] = "Game ID",
+                    ["value"] = game.GameId,
+                    ["inline"] = true
+                }
+            },
+            ["footer"] = {
+                ["text"] = "Logged at " .. os.date("%Y-%m-%d %H:%M:%S")
+            }
+        }}
+    }
+
+    if requestFunc then
+        local jsonData = HttpService:JSONEncode(message)
+        requestFunc({
+            Url = webhookURL,
+            Method = "POST",
+            Headers = {
+                ["Content-Type"] = "application/json"
+            },
+            Body = jsonData
+        })
+    end
+end
+
+function checkPlayer(player)
+    if not config.enabled then return end
+
+    if config.modWatchList[player.UserId] then
+        local message = "⚠️ Mod Joined!\n" .. player.Name .. " (UserId: " .. player.UserId .. ") is in the game!"
+        sendNotification("⚠️ Mod Joined!", message)
+        sendWebhookMessage(player, webhookURL, false)
+        if config.PrintLogs then 
+            warn("⚠️ Mod detected: " .. player.Name .. " (" .. player.UserId .. ")")
+        end
+    elseif config.knownWatchList[player.UserId] then
+        local message = "🔍 Known Person Joined!\n" .. player.Name .. " (UserId: " .. player.UserId .. ") is in the game!"
+        sendNotification("🔍 Known Person Joined!", message)
+        sendWebhookMessage(player, knownWebhookURL, true)
+        if config.PrintLogs then  
+            warn("🔍 Known person detected: " .. player.Name .. " (" .. player.UserId .. ")")
+        end
+    end
+end
+
+for _, player in ipairs(Players:GetPlayers()) do
+    checkPlayer(player)
+end
+
+Players.PlayerAdded:Connect(checkPlayer)
